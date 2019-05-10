@@ -14,6 +14,37 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
+    let pieceWidth: CGFloat = 36.0
+    let pieceHeight: CGFloat = 36.0
+    
+    let gameLayer = SKNode()
+    let pieceLayer = SKNode()
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override init(size: CGSize) {
+        super.init(size: size)
+        
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
+        let background = SKSpriteNode(imageNamed: "Background")
+        background.size = size
+        addChild(background)
+        
+        addChild(gameLayer)
+        
+        let layerPosition = CGFloat(
+            x: -pieceWidth * CGFloat(numColumns) / 2,
+            y: -pieceHeight * CGFloat(numRows) / 2)
+        
+        pieceLayer.position = layerPosition
+        gameLayer.addChild(pieceLayer)
+    }
+    
+    
+    
     override func didMove(to view: SKView) {
         
         // Get label node from scene and store it for use later

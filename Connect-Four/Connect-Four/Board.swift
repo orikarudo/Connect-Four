@@ -15,7 +15,7 @@ class Board {
     private var pieces = Array2D<Piece>(columns: numColumns, rows: numRows)
     
     func piece(atColumn column: Int, row: Int) -> Piece? {
-        precondition(colunm >= 0 && column < numColumns)
+        precondition(column >= 0 && column < numColumns)
         precondition(row >= 0 && row < numRows)
         return pieces[column, row] //because pieces is private
     }
